@@ -304,6 +304,7 @@ async function exportAccountId(credentialsClient, maskAccountId) {
     if (maskAccountId) {
         core.setSecret(accountId);
     }
+    core.info(`Setting aws-account-id output to ${accountId}`); // DEBUGGING
     core.setOutput('aws-account-id', accountId);
     return accountId;
 }
@@ -529,6 +530,7 @@ async function run() {
             // and cases where the user intended to provide input credentials but the secrets inputs resolved to empty strings.
             await credentialsClient.validateCredentials(AccessKeyId, roleChaining);
             sourceAccountId = await (0, helpers_1.exportAccountId)(credentialsClient, maskAccountId);
+            core.info(`Successfully validated credentials, source account id: ${sourceAccountId}`); // DEBUGGING
         }
         // Get role credentials if configured to do so
         if (roleToAssume) {
