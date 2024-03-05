@@ -65,6 +65,7 @@ export async function exportAccountId(credentialsClient: CredentialsClient, mask
   if (maskAccountId) {
     core.setSecret(accountId);
   }
+  core.info(`Setting aws-account-id output to ${accountId}`); // DEBUGGING
   core.setOutput('aws-account-id', accountId);
   return accountId;
 }

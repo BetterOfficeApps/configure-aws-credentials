@@ -140,6 +140,7 @@ export async function run() {
       // and cases where the user intended to provide input credentials but the secrets inputs resolved to empty strings.
       await credentialsClient.validateCredentials(AccessKeyId, roleChaining);
       sourceAccountId = await exportAccountId(credentialsClient, maskAccountId);
+      core.info(`Successfully validated credentials, source account id: ${sourceAccountId}`); // DEBUGGING
     }
 
     // Get role credentials if configured to do so
